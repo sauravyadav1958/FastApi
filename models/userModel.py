@@ -1,4 +1,3 @@
-
 from turtle import back
 from sqlalchemy import Column, Integer, String
 from database.database import Base
@@ -10,5 +9,5 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String, unique=True)
     password = Column(String)
-    
+
     blogs = relationship("BlogModel", back_populates="creator")
