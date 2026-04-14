@@ -12,10 +12,10 @@ router = APIRouter(prefix="/authentication", tags=["authentication"])
 get_db = database.get_db  # Assuming get_db is defined elsewhere in your application
 
 
-@router.post("/")
+@router.post("/", response_model=dict)
 def authenticate(
     request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
-):
+) -> dict:
     user = db.query(UserModel).filter(UserModel.username == request.username).first()
     if not user:
         return {"error": "Invalid username !!!"}

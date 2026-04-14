@@ -1,0 +1,19 @@
+{
+  "claudeCode.useTerminal": true,
+  "python-envs.defaultEnvManager": "ms-python.python:conda",
+  "python-envs.defaultPackageManager": "ms-python.python:conda",
+  "python.defaultInterpreterPath": "/Users/sauravyadav/Documents/ChatBotPro/.conda/bin/python",
+  "python-envs.pythonProjects": [],
+  "python.terminal.activateEnvironment": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt"
+
+  //     "python.analysis.autoImportCompletions": true,
+  //   "python.analysis.indexing": true,
+  //   "python.analysis.extraPaths": [
+  //     "./",
+  //     "./backend",
+  //     "./frontend"
+  //   ]
+}

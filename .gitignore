@@ -1,0 +1,14 @@
+# Environments
+.conda/
+venv/
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Runtime files
+generated_files/
+
+# OS
+.DS_Store

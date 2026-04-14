@@ -5,12 +5,12 @@ from schemas.userSchema import UserRequest
 from utils.hash import Hash
 
 
-def get_all(db: Session):
+def get_all(db: Session) -> list[UserModel]:
     users = db.query(UserModel).all()
     return users
 
 
-def create_user(request: UserRequest, db: Session):
+def create_user(request: UserRequest, db: Session) -> UserModel:
     new_user = UserModel(
         username=request.username, password=Hash.bcrypt(request.password)
     )

@@ -5,12 +5,12 @@ from schemas.blogSchema import BlogRequest
 from schemas.userSchema import UserResponse
 
 
-def get_all(db: Session):
+def get_all(db: Session) -> list[BlogRequest]:
     blogs = db.query(BlogModel).all()
     return blogs
 
 
-def get_by_id(id: int, db: Session, current_user: UserResponse):
+def get_by_id(id: int, db: Session, current_user: UserResponse) -> BlogRequest:
     blog = db.query(BlogModel).filter(BlogModel.id == id).first()
     if not blog:
         raise HTTPException(
@@ -19,7 +19,7 @@ def get_by_id(id: int, db: Session, current_user: UserResponse):
     return blog
 
 
-def create_blog(request: BlogRequest, db: Session, current_user: UserResponse):
+def create_blog(request: BlogRequest, db: Session, current_user: UserResponse) -> BlogRequest:
     new_blog = BlogModel(
         title=request.title, body=request.body, user_id=current_user.id
     )
@@ -30,7 +30,7 @@ def create_blog(request: BlogRequest, db: Session, current_user: UserResponse):
     return new_blog
 
 
-def delete_blog(id: int, db: Session, current_user: UserResponse):
+def delete_blog(id: int, db: Session, current_user: UserResponse) -> dict:
     delete_blog = db.query(BlogModel).filter(BlogModel.id == id)
     if not delete_blog.first():
         raise HTTPException(
@@ -41,7 +41,7 @@ def delete_blog(id: int, db: Session, current_user: UserResponse):
     return {"message": "Blog deleted successfully"}
 
 
-def update_blog(id: int, db: Session, request: BlogRequest, current_user: UserResponse):
+def update_blog(id: int, db: Session, request: BlogRequest, current_user: UserResponse) -> BlogRequest:
     update_blog = db.query(BlogModel).filter(BlogModel.id == id)
     if not update_blog.first():
         raise HTTPException(

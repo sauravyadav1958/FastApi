@@ -1,0 +1,58 @@
+// python -m uvicorn backend.app.main:app --reload
+// conda activate /Users/sauravyadav/Documents/FastApi/.conda
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug FastAPI (uvicorn)",
+      "type": "debugpy",
+      "request": "launch",
+      "python": "${workspaceFolder}/.conda/bin/python",
+      "module": "uvicorn",
+      "args": [
+        // "-m",
+        // "uvicorn",
+        "main:app",
+        "--reload",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8001"
+        // "--loop",
+        // "asyncio"
+      ],
+      "cwd": "${workspaceFolder}",
+      // "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal",
+      // "jinja": true,
+      "justMyCode": true
+    }
+    // {
+    //   "name": "Debug Streamlit",
+    //   "type": "debugpy",
+    //   "request": "launch",
+    //   "module": "streamlit",
+    //   "args": ["run", "frontend/app.py", "--logger.level=debug"],
+    //   "cwd": "${workspaceFolder}",
+    //   "justMyCode": true
+    // }
+  ]
+
+  // "version": "0.2.0",
+  // "configurations": [
+  //   {
+  //     "name": "Debug Streamlit",
+  //     "type": "debugpy",
+  //     "request": "launch",
+  //     "module": "streamlit",
+  //     "args": [
+  //       "run",
+  //       "frontend/app.py",
+  //       "frontend/app.py",
+  //       "--server.port",
+  //       "8501"
+  //     ],
+  //     "justMyCode": true
+  //   }
+  // ]
+}
