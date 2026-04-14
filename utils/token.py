@@ -12,9 +12,8 @@ EXPIRE_MINUTES = 30
 
 def create_access_token(data: dict) -> str:
 
-    toencode = data.copy()
-    exp_time = datetime.now() + timedelta(minutes=EXPIRE_MINUTES)
-    toencode.update({"exp": exp_time})
+    toencode = data.copy() # toencode is data to be encoded in the JWT token.
+    exp_time = datetime.now() + timedelta(minutes=EXPIRE_MINUTES) # timedelta helps to add a specific duration to a datetime object.
     access_token = jwt.encode(toencode, SECRET_KEY, algorithm=ALGORITHM)
     return access_token
 

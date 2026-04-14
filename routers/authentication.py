@@ -14,6 +14,8 @@ get_db = database.get_db  # Assuming get_db is defined elsewhere in your applica
 
 @router.post("/", response_model=dict)
 def authenticate(
+    # OAuth2PasswordRequestForm is a class provided by FastAPI that represents the form data sent by the client during authentication. 
+    # Here Depends() is same as Depends(OAuth2PasswordRequestForm).
     request: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
 ) -> dict:
     user = db.query(UserModel).filter(UserModel.username == request.username).first()

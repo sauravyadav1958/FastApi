@@ -12,4 +12,5 @@ class BlogModel(Base):
     title = Column(String)
     body = Column(String)
     user_id = Column(Integer, ForeignKey("user.id"))
+    
     creator = relationship("UserModel", back_populates="blogs")

@@ -4,7 +4,7 @@ from fastapi.responses import JSONResponse
 from routers import authentication, blog
 from database.database import Base, engine
 from routers import user
-
+# for swagger/openapi documentation.
 app = FastAPI(
     title="FastAPI",
     description="blogs and users management",
@@ -13,14 +13,15 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://127.0.0.1:8001"],
-    allow_credentials=True,
+    allow_origins=["http://127.0.0.1:8001"], # allows requests from this origin.
+    allow_credentials=True, # allows cookies, authorization headers to be included in cross-origin requests. Needed for authentication.
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+# Base.metadata.create_all(engine) is a SQLAlchemy command that creates database tables automatically based on your ORM models.
 Base.metadata.create_all(engine)
 
+# app.include_router(blog.router): connects router to main app
 app.include_router(blog.router)
 app.include_router(user.router)
 app.include_router(authentication.router)

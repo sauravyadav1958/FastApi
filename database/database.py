@@ -18,6 +18,8 @@ Base = declarative_base()
 def get_db():
     db = SessionLocal()
     try:
-        yield db
+        # yield Sends value and pauses, then resumes later. return + cleanup capability. 
+        # Pauses till reponse is returned to the client, then resumes to close the db session.
+        yield db 
     finally:
         db.close()
